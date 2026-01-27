@@ -140,6 +140,8 @@ flowchart TD
 
 ## 2. Load Balancing
 
+> **Reference:** Maglev (2016). "Maglev: A Fast and Reliable Software Network Load Balancer." NSDI.
+
 ### What Load Balancers Do
 
 A load balancer distributes incoming traffic across multiple backend servers to:
@@ -201,6 +203,17 @@ graph TD
 | **IP Hash** | `hash(client_ip) % servers` | Session affinity needed | Uneven if IP distribution skewed |
 | **Least Response Time** | Route to fastest responding server | Latency-critical applications | Requires response time tracking |
 | **Random** | Random selection | Simple systems | Surprisingly effective at scale |
+
+### Load Balancing Algorithm Complexity
+
+| Algorithm | Time (per request) | Space | State Required |
+|-----------|-------------------|-------|----------------|
+| **Round Robin** | O(1) | O(1) | Counter |
+| **Weighted Round Robin** | O(1) | O(n) | Counter + weights |
+| **Least Connections** | O(n) or O(log n) with heap | O(n) | Connection counts |
+| **IP Hash** | O(1) | O(1) | None |
+| **Least Response Time** | O(n) | O(n) | Response times |
+| **Consistent Hashing** | O(k log n) | O(n × k) | Hash ring with k virtual nodes |
 
 ### Algorithm Selection Flowchart
 
@@ -495,6 +508,10 @@ flowchart TD
 
 ## 5. Rate Limiting
 
+> **References:**
+> - Turner, J. (1986). "New Directions in Communications (or Which Way to the Information Age?)." IEEE Communications Magazine. (Token bucket origin)
+> - Beyer, B. et al. (2016). "Site Reliability Engineering." O'Reilly. (Production rate limiting patterns)
+
 ### Why Rate Limit?
 
 - **Prevent abuse:** Stop malicious actors from overwhelming the system
@@ -526,6 +543,18 @@ flowchart TB
 | **Sliding Window Counter** | Weighted window overlap | Good | O(1) | Most production use |
 | **Token Bucket** | Tokens refill at fixed rate | Excellent | O(1) | APIs with burst tolerance |
 | **Leaky Bucket** | Constant output rate queue | Smooths bursts | O(1) | Constant throughput needed |
+
+### Rate Limiting Algorithm Complexity
+
+| Algorithm | Time (per request) | Space (per key) | Accuracy | Distributed Support |
+|-----------|-------------------|-----------------|----------|---------------------|
+| **Fixed Window** | O(1) | O(1) | Low (boundary issues) | Easy (atomic INCR) |
+| **Sliding Window Log** | O(n) for cleanup | O(n) requests | High | Medium (set operations) |
+| **Sliding Window Counter** | O(1) | O(2) counters | Good | Easy (two counters) |
+| **Token Bucket** | O(1) | O(2) values | Good | Medium (CAS operation) |
+| **Leaky Bucket** | O(1) | O(2) values | Good | Medium (CAS operation) |
+
+Where n = requests in window.
 
 ### Token Bucket Deep Dive
 
@@ -1129,6 +1158,15 @@ Sizing:
 > **"When would you use serverless vs. containers?"**
 
 "Serverless excels for event-driven workloads with variable traffic—like webhook handlers, scheduled jobs, or APIs with unpredictable load. The zero-cost-when-idle model is compelling. I'd use containers for steady-state workloads, long-running processes, or when I need sub-100ms cold start times. The hybrid approach often works best: serverless for edges, containers for core services."
+
+---
+
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial document with scaling, load balancing, rate limiting, HA patterns |
+| 2025-01 | Quality review: Added paper references (Maglev 2016, SRE book), complexity tables for load balancing and rate limiting algorithms |
 
 ---
 

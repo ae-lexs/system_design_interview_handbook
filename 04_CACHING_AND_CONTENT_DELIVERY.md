@@ -871,6 +871,10 @@ def get_response_headers(resource_type: str) -> dict:
 
 When cache is full, which item should be removed?
 
+> **References:**
+> - Belady, L. A. (1966). "A Study of Replacement Algorithms for a Virtual-Storage Computer." IBM Systems Journal.
+> - Megiddo, N. & Modha, D. S. (2003). "ARC: A Self-Tuning, Low Overhead Replacement Cache." USENIX FAST.
+
 ### Common Eviction Policies
 
 | Policy | Rule | Pros | Cons |
@@ -880,6 +884,18 @@ When cache is full, which item should be removed?
 | **FIFO** | Remove oldest added | Simple, predictable | Ignores access patterns |
 | **Random** | Remove random item | Simple, no overhead | May evict hot items |
 | **TTL** | Remove expired items | Time-based freshness | Doesn't help when full |
+
+### Eviction Policy Complexity Analysis
+
+| Policy | Get | Put | Evict | Space Overhead | Implementation |
+|--------|-----|-----|-------|----------------|----------------|
+| **LRU** | O(1) | O(1) | O(1) | O(n) pointers | HashMap + Doubly Linked List |
+| **LFU** | O(1)* | O(1)* | O(1)* | O(n) counters + buckets | HashMap + Frequency Buckets |
+| **FIFO** | O(1) | O(1) | O(1) | O(n) queue | HashMap + Queue |
+| **Random** | O(1) | O(1) | O(1) | None | HashMap only |
+| **ARC** | O(1) | O(1) | O(1) | O(2n) lists | Two LRU lists + ghost entries |
+
+*LFU O(1) requires careful implementation with frequency buckets; naive implementation is O(log n).
 
 ### LRU (Least Recently Used)
 
@@ -990,6 +1006,8 @@ Compare to no cache: 100ms → 85% latency reduction
 ```
 
 #### Hit Rate vs Cache Size (Zipf Distribution)
+
+> **Reference:** Breslau, L. et al. (1999). "Web Caching and Zipf-like Distributions: Evidence and Implications." IEEE INFOCOM.
 
 Most real workloads follow a Zipf distribution (power law)—a small fraction of items receive most accesses.
 
@@ -1114,6 +1132,8 @@ memory = estimate_redis_memory(
 
 ## 8. Bloom Filters
 
+> **Reference:** Bloom, B. H. (1970). "Space/Time Trade-offs in Hash Coding with Allowable Errors." Communications of the ACM.
+
 ### The Problem
 
 How do you check if an item is in a very large set without storing the entire set?
@@ -1133,6 +1153,21 @@ A **space-efficient probabilistic data structure** for set membership testing.
 - **Cannot enumerate:** Can't list what's in the set
 - **Cannot delete:** (standard version; Counting Bloom Filters can)
 - **Fixed size:** Doesn't grow with number of items
+
+### Bloom Filter Complexity Analysis
+
+| Operation | Time Complexity | Space Complexity | Notes |
+|-----------|-----------------|------------------|-------|
+| **Insert** | O(k) | — | k hash computations |
+| **Query** | O(k) | — | k hash lookups |
+| **Space** | — | O(m) bits | m = -n×ln(p)/(ln2)² for FP rate p |
+| **Union** | O(m) | O(m) | Bitwise OR of two filters |
+
+Where: n = expected items, m = bit array size, k = hash functions, p = false positive rate.
+
+**Optimal Parameters:**
+- Optimal k = (m/n) × ln(2) ≈ 0.693 × (m/n)
+- For 1% FP rate: m/n ≈ 9.6 bits per item, k ≈ 7
 
 ### How It Works
 
@@ -1631,6 +1666,16 @@ Add:
 | [Communication Patterns](./05_COMMUNICATION_PATTERNS.md) | Cache invalidation can trigger real-time updates |
 | [Scaling & Infrastructure](./07_SCALING_AND_INFRASTRUCTURE.md) | CDN and caching are key traffic management tools |
 | [Workload Optimization](./08_WORKLOAD_OPTIMIZATION.md) | Caching is the primary read optimization strategy |
+
+---
+
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial document with caching strategies, CDN, HTTP caching |
+| 2025-01 | P2 enhancement: Added Zipf distribution, cache sizing formulas |
+| 2025-01 | Quality review: Added paper references (Bloom 1970, Belady 1966, Breslau 1999), complexity analysis tables for eviction policies and Bloom filters |
 
 ---
 

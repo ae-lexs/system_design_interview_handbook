@@ -54,6 +54,10 @@ graph TB
 
 ### 1. Distributed Locking
 
+> **References:**
+> - Lamport, L. (1978). "Time, Clocks, and the Ordering of Events in a Distributed System." Communications of the ACM.
+> - Martin Kleppmann's analysis (2016). "How to do distributed locking." (critique of Redlock algorithm)
+
 #### The Problem
 
 Multiple processes across different nodes need mutually exclusive access to a shared resource.
@@ -223,6 +227,15 @@ sequenceDiagram
     DB->>C1: Error: stale token
 ```
 
+#### Complexity Analysis: Distributed Locks
+
+| Operation | Redis Single | Redlock (N nodes) | ZooKeeper |
+|-----------|--------------|-------------------|-----------|
+| **Acquire** | O(1), 1 RTT | O(N), N RTTs | O(1), 2 RTTs |
+| **Release** | O(1), 1 RTT | O(N), N RTTs | O(1), 1 RTT |
+| **Failure Detection** | TTL expiry | TTL expiry | Session timeout |
+| **Network Calls** | 1 | N (quorum) | 2-3 (leader) |
+
 #### Trade-Off Analysis
 
 | Approach | Consistency | Availability | Complexity | Use Case |
@@ -236,6 +249,11 @@ sequenceDiagram
 ---
 
 ### 2. Distributed Transactions
+
+> **References:**
+> - Gray, J. (1978). "Notes on Database Operating Systems." Operating Systems: An Advanced Course.
+> - Garcia-Molina, H. & Salem, K. (1987). "Sagas." ACM SIGMOD.
+> - Mohan, C. et al. (1986). "Transaction Management in the R* Distributed Database System." ACM TODS.
 
 #### The Two Generals Problem
 
@@ -314,6 +332,17 @@ stateDiagram-v2
 | Participant fails after VOTE | Prepared | Recovery from WAL |
 | Coordinator fails before decision | Prepared | **BLOCKED** until recovery |
 | Coordinator fails after decision | Committed/Aborted | Participants query coordinator |
+
+#### Transaction Protocol Complexity
+
+| Protocol | Message Complexity | Time Complexity | Blocking | Partition Tolerance |
+|----------|-------------------|-----------------|----------|---------------------|
+| **2PC** | O(3n) | O(2 RTT) | Yes (coordinator crash) | No |
+| **3PC** | O(4n) | O(3 RTT) | Reduced | No |
+| **Saga** | O(2n) | O(n steps) | No | Yes |
+| **Paxos Commit** | O(n²) | O(2 RTT) | No | Yes |
+
+Where n = number of participants.
 
 #### Three-Phase Commit (3PC)
 
@@ -1052,6 +1081,8 @@ class QueueFullError(Exception):
 ## Part III: Data Patterns
 
 ### 7. Event Sourcing
+
+> **Reference:** Fowler, M. (2005). "Event Sourcing." martinfowler.com. Also: Young, G. (2010). "CQRS Documents."
 
 #### Traditional State vs Event Sourcing
 
@@ -2009,6 +2040,16 @@ flowchart TD
 4. Compare event sourcing with traditional CRUD for an e-commerce order system. What are the migration considerations?
 
 5. Design a CDC pipeline that keeps Elasticsearch in sync with PostgreSQL. How do you handle the initial backfill and ongoing changes?
+
+---
+
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial document with coordination, resilience, and data patterns |
+| 2025-01 | P1 enhancement: Added chain replication, Dynamo link |
+| 2025-01 | Quality review: Added paper references (Lamport 1978, Garcia-Molina 1987, Fowler 2005), complexity analysis tables for distributed locks and transaction protocols |
 
 ---
 

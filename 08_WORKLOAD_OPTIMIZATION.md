@@ -785,6 +785,11 @@ flowchart TB
 
 ## Stream Processing Architectures
 
+> **References:**
+> - Marz, N. (2011). "How to beat the CAP theorem." (Lambda architecture origin)
+> - Kreps, J. (2014). "Questioning the Lambda Architecture." (Kappa architecture proposal)
+> - Chandy, K. M. & Lamport, L. (1985). "Distributed Snapshots: Determining Global States." ACM TOCS. (Exactly-once checkpointing)
+
 ### Lambda vs Kappa Architecture
 
 Two paradigms for processing data at scale with different trade-offs.
@@ -863,6 +868,16 @@ flowchart TB
 | **Deployment** | Standalone cluster | Spark cluster | Library (no cluster) |
 | **Backpressure** | Native | Available | Consumer-based |
 | **Learning Curve** | Medium | Medium (Spark knowledge) | Low (just a library) |
+
+#### Stream Processing Complexity Analysis
+
+| Operation | Batch (Spark) | Micro-batch (Spark Streaming) | True Streaming (Flink) |
+|-----------|---------------|-------------------------------|------------------------|
+| **Latency** | Minutes-hours | Seconds | Milliseconds |
+| **Throughput** | O(data size) | O(data/batch_interval) | O(events × operators) |
+| **State overhead** | O(partition_size) | O(window_size) | O(state_size) per key |
+| **Recovery time** | Minutes | Seconds-minutes | Seconds |
+| **Reprocessing** | Simple (re-run job) | Moderate (reset offsets) | Checkpoint replay |
 
 ```mermaid
 flowchart TD
@@ -1080,6 +1095,16 @@ flowchart TD
 3. Compare tiered storage approaches for a time-series database with 5 years of data.
 4. Design the write path for a collaborative document editor with real-time sync.
 5. Explain how you'd migrate from a monolithic database to a CQRS architecture.
+
+---
+
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial document with workload characterization, read/write optimization strategies |
+| 2025-01 | P2 enhancement: Added Lambda vs Kappa architecture, Flink/Spark/Kafka Streams comparison |
+| 2025-01 | Quality review: Added paper references (Marz 2011, Kreps 2014, Chandy-Lamport 1985), stream processing complexity table |
 
 ---
 

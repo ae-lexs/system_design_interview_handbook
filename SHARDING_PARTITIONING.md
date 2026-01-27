@@ -1012,6 +1012,14 @@ flowchart TD
 
 ---
 
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial deep-dive document with 4 partitioning strategies, complexity analysis, production case studies |
+
+---
+
 ## Navigation
 
 **Parent:** [Data Management Overview](./DATA_MANAGEMENT.md)

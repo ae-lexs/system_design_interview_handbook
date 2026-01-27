@@ -420,6 +420,14 @@ flowchart TB
 
 ---
 
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial hub document with decision frameworks, SQL vs NoSQL, storage engine overview, normalization patterns |
+
+---
+
 ## Navigation
 
 **Previous:** [02 — Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md)

@@ -1164,6 +1164,14 @@ flowchart TD
 
 ---
 
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial deep-dive document with B-Tree, LSM-Tree mechanics, WAL durability, Bloom filters, amplification analysis |
+
+---
+
 ## Navigation
 
 **Parent:** [Data Management Overview](./DATA_MANAGEMENT.md)

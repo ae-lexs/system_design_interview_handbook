@@ -1152,6 +1152,14 @@ flowchart TD
 
 ---
 
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial deep-dive document with Paxos, Multi-Paxos, Raft, Zab, safety proofs, production examples |
+
+---
+
 ## Navigation
 
 **Parent:** [Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md)

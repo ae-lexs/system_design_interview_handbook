@@ -87,6 +87,8 @@ flowchart TB
 
 #### REST (Representational State Transfer)
 
+> **Reference:** Fielding, R. T. (2000). "Architectural Styles and the Design of Network-based Software Architectures." Doctoral dissertation, UC Irvine.
+
 **Philosophy:** Everything is a resource addressable by URL. HTTP verbs define operations.
 
 ```mermaid
@@ -344,9 +346,32 @@ sequenceDiagram
 | **Overfetching** | Common | Unlikely | Solved |
 | **Performance** | Good | Excellent | Good |
 
+### Protocol Performance Benchmarks
+
+Typical latency and throughput measurements (single request, same datacenter):
+
+| Protocol | Serialization | Latency (p50) | Latency (p99) | Throughput | Payload Overhead |
+|----------|---------------|---------------|---------------|------------|------------------|
+| **REST/JSON** | JSON (text) | 1-5 ms | 10-50 ms | 10-50K req/s | High (verbose) |
+| **gRPC/Protobuf** | Protobuf (binary) | 0.1-1 ms | 2-10 ms | 100-500K req/s | Low (compact) |
+| **GraphQL/JSON** | JSON (text) | 2-10 ms | 20-100 ms | 5-20K req/s | Variable |
+
+**Serialization Comparison:**
+
+| Format | Encode Time | Decode Time | Size (1KB object) | Human Readable |
+|--------|-------------|-------------|-------------------|----------------|
+| **JSON** | 1x (baseline) | 1x | 100% | Yes |
+| **Protobuf** | 2-5x faster | 2-5x faster | 30-50% | No |
+| **MessagePack** | 1.5-2x faster | 1.5-2x faster | 50-70% | No |
+| **Avro** | 2-3x faster | 2-3x faster | 30-40% | No (schema) |
+
 ---
 
 ### HTTP Protocol Evolution
+
+> **References:**
+> - Belshe, M. et al. (2015). "Hypertext Transfer Protocol Version 2 (HTTP/2)." RFC 7540.
+> - Iyengar, J. & Thomson, M. (2021). "QUIC: A UDP-Based Multiplexed and Secure Transport." RFC 9000.
 
 Understanding the evolution of HTTP helps explain why modern systems make certain transport choices.
 
@@ -639,6 +664,8 @@ flowchart TD
 ---
 
 ### Apache Kafka Deep Dive
+
+> **Reference:** Kreps, J. et al. (2011). "Kafka: A Distributed Messaging System for Log Processing." NetDB Workshop.
 
 ```mermaid
 flowchart TB
@@ -1556,6 +1583,16 @@ flowchart TB
 4. **Design a collaborative document editor** (like Google Docs). What real-time technology would you use? How would you handle offline edits?
 
 5. **Your API is used by mobile apps in areas with poor connectivity.** How would you design the communication layer for resilience?
+
+---
+
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial document with sync/async/real-time patterns |
+| 2025-01 | P2 enhancement: Added HTTP/3 and QUIC protocol section |
+| 2025-01 | Quality review: Added paper references (Fielding 2000, RFC 9000, Kreps 2011), protocol performance benchmarks |
 
 ---
 

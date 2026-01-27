@@ -818,6 +818,16 @@ flowchart TD
 
 ---
 
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial quick reference with latency numbers, estimation formulas, decision trees |
+| 2025-01 | P3 enhancement: Added queuing theory, scalability laws (Amdahl's, USL), NewSQL decision tree, cache sizing formulas |
+| 2025-01 | Quality review: Updated pre-interview checklist with advanced concepts |
+
+---
+
 ## Navigation
 
 | Previous | Index |

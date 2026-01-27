@@ -1049,6 +1049,14 @@ flowchart TD
 
 ---
 
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial deep-dive document with NTP, Lamport clocks, vector clocks, HLC, TrueTime, production implementations |
+
+---
+
 ## Navigation
 
 **Parent:** [Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md)

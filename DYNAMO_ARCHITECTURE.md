@@ -1092,6 +1092,14 @@ class DynamoNode:
 
 ---
 
+## Revision History
+
+| Date | Change |
+|------|--------|
+| 2025-01 | Initial deep-dive document with complete paper treatment: partitioning, replication, vector clocks, hinted handoff, Merkle trees, gossip protocol |
+
+---
+
 ## Navigation
 
 **Parent:** [Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md)
