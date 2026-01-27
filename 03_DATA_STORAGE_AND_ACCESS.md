@@ -68,6 +68,8 @@ flowchart TB
 
 ### B-Tree Storage Engine (Read-Optimized)
 
+> **Reference:** Bayer, R. & McCreight, E. (1972). "Organization and Maintenance of Large Ordered Indexes." Acta Informatica.
+
 B-Trees are the backbone of traditional relational databases. They maintain sorted data in a balanced tree structure optimized for both reads and writes.
 
 #### How B-Trees Work
@@ -147,6 +149,8 @@ sequenceDiagram
 
 ### LSM-Tree Storage Engine (Write-Optimized)
 
+> **Reference:** O'Neil, P. et al. (1996). "The Log-Structured Merge-Tree (LSM-Tree)." Acta Informatica.
+
 Log-Structured Merge Trees convert random writes into sequential writes, dramatically improving write throughput at the cost of read performance.
 
 #### How LSM-Trees Work
@@ -218,6 +222,32 @@ flowchart TD
 
 **Read Amplification:** A single read may need to check multiple levels. Bloom filters help skip SSTables that definitely don't contain the key.
 
+#### LSM-Tree Performance Characteristics
+
+| Operation | Time Complexity | Space Complexity | Notes |
+|-----------|-----------------|------------------|-------|
+| **Write** | O(1) amortized | O(log n) levels | Append to MemTable + WAL |
+| **Point lookup** | O(L) worst case | — | L = number of levels, mitigated by Bloom filters |
+| **Range scan** | O(L × k) | — | Must merge-sort across levels |
+| **Compaction** | O(n) per level | O(n) temporary | Background process |
+
+**Amplification Factors:**
+
+| Factor | Definition | Typical Values | Impact |
+|--------|------------|----------------|--------|
+| **Write amplification** | Bytes written to disk / bytes written by app | 10-30× | SSD wear, write throughput |
+| **Read amplification** | Disk reads / logical reads | 1-10× | Read latency |
+| **Space amplification** | Disk space / logical data size | 1.1-2× | Storage cost |
+
+```
+Leveled Compaction Analysis:
+- L levels, each 10× larger than previous
+- Level i has ~10^i files
+- Each key may be rewritten ~L times
+- Write amplification ≈ 10 × L (worst case)
+- Read amplification ≈ 1 + L (with Bloom filters)
+```
+
 #### Compaction Strategies
 
 | Strategy | Description | Trade-off |
@@ -266,6 +296,71 @@ flowchart TD
 | **Typical use cases** | OLTP, random access | Write-heavy, time-series, logs |
 
 > **Deep Dive:** For comprehensive coverage including compaction strategies, write amplification analysis, and production tuning, see [STORAGE_ENGINES.md](./STORAGE_ENGINES.md).
+
+### Failure Handling and Recovery
+
+Understanding how storage engines handle failures is critical for reliability.
+
+#### B-Tree Crash Recovery
+
+```mermaid
+flowchart TD
+    subgraph "B-Tree Recovery Process"
+        CRASH[System Crash] --> RESTART[Database Restart]
+        RESTART --> CHECKPOINT[Find Last Checkpoint]
+        CHECKPOINT --> WAL_SCAN[Scan WAL from Checkpoint]
+        WAL_SCAN --> REDO[Redo Committed Transactions]
+        REDO --> UNDO[Undo Uncommitted Transactions]
+        UNDO --> READY[Database Ready]
+    end
+```
+
+| Failure Type | Detection | Recovery | Data Loss Risk |
+|--------------|-----------|----------|----------------|
+| **Process crash** | Restart | WAL replay | None (if fsync enabled) |
+| **Page corruption** | Checksum mismatch | Restore from backup/replica | Minutes to hours |
+| **Disk failure** | I/O errors | Failover to replica | None (with sync replication) |
+| **Torn page** | Partial write detected | Full page writes (double-write buffer) | None |
+
+#### LSM-Tree Crash Recovery
+
+```mermaid
+flowchart TD
+    subgraph "LSM-Tree Recovery Process"
+        CRASH2[System Crash] --> RESTART2[Database Restart]
+        RESTART2 --> SSTABLE_CHECK[SSTables are immutable - intact]
+        RESTART2 --> WAL_REPLAY[Replay WAL to rebuild MemTable]
+        SSTABLE_CHECK --> READY2[Database Ready]
+        WAL_REPLAY --> READY2
+    end
+```
+
+**LSM Advantage:** SSTables are immutable and written atomically. Only the MemTable (in-memory) needs recovery from WAL.
+
+| Failure Type | Impact | Recovery |
+|--------------|--------|----------|
+| **Crash during flush** | Partial SSTable | Discard incomplete SSTable, replay WAL |
+| **Crash during compaction** | Temporary files | Delete temp files, original SSTables intact |
+| **Corruption in SSTable** | Checksum failure | Rebuild from other levels or replicas |
+
+#### Object Storage Failure Handling
+
+```mermaid
+flowchart TD
+    subgraph "S3 Reliability Patterns"
+        WRITE[Write Object] --> RETRY{Success?}
+        RETRY -->|No| BACKOFF[Exponential Backoff]
+        BACKOFF --> WRITE
+        RETRY -->|Yes| VERIFY[Verify ETag/Checksum]
+        VERIFY --> REPLICATE[S3 replicates to 3+ AZs]
+    end
+```
+
+| S3 Failure Mode | Mitigation | SLA |
+|-----------------|------------|-----|
+| **Transient errors** | Retry with exponential backoff | 99.99% availability |
+| **Data corruption** | ETag/MD5 verification | 99.999999999% durability |
+| **Region outage** | Cross-region replication | RTO varies by config |
 
 ### Decision Framework: When to Use Which
 
@@ -647,6 +742,10 @@ SELECT * FROM orders_by_user WHERE status = 'pending';
 ```
 
 ### NewSQL: Distributed SQL Databases
+
+> **References:**
+> - Corbett, J. et al. (2012). "Spanner: Google's Globally-Distributed Database." OSDI.
+> - Taft, R. et al. (2020). "CockroachDB: The Resilient Geo-Distributed SQL Database." SIGMOD.
 
 NewSQL databases combine the scalability of NoSQL with the ACID guarantees and SQL interface of traditional relational databases.
 
@@ -1164,6 +1263,18 @@ Add:
 4. **Compare B-Tree vs LSM-Tree** for a financial trading system that needs both high write throughput and low-latency reads for recent data.
 
 5. **Design the data model for an e-commerce product catalog** with millions of products, each with varying attributes (electronics have different specs than clothing). Would you use SQL, document store, or hybrid?
+
+---
+
+## Revision History
+
+| Date | Version | Changes |
+|------|---------|---------|
+| 2025-01 | 1.0 | Initial creation with storage engines, indexing, data modeling |
+| 2025-01 | 2.0 | P2: Added NewSQL section (Spanner, CockroachDB, TiDB) |
+| 2025-01 | 2.1 | Added paper references (Bayer, O'Neil, Corbett, Taft) |
+| 2025-01 | 2.2 | Added LSM-Tree complexity analysis and amplification factors |
+| 2025-01 | 2.3 | Added failure handling section (B-Tree recovery, LSM recovery, S3 patterns) |
 
 ---
 
