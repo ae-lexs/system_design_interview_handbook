@@ -3,7 +3,7 @@
 > Mathematical foundations, algorithm variants, and production implementations for minimal-disruption data distribution.
 
 **Prerequisites:** [Data Management Overview](./DATA_MANAGEMENT.md), [Sharding & Partitioning](./DD_SHARDING_PARTITIONING.md)
-**Related:** [Dynamo Architecture](./DD_DYNAMO_ARCHITECTURE.md), [Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md)
+**Related:** [Dynamo Architecture](./DD_DYNAMO_ARCHITECTURE.md), [Distributed Coordination](./07_DISTRIBUTED_COORDINATION.md)
 **Estimated study time:** 2-3 hours
 
 ---

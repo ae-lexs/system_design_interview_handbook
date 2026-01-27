@@ -1,9 +1,9 @@
-# 03 — Data Storage and Access
+# 04 — Data Storage and Access
 
 > How you store and access data determines everything: latency, throughput, consistency, and cost. Master the storage layer, and you master the system.
 
-**Prerequisites:** [01 — Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md), [02 — Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md)
-**Builds toward:** [04 — Caching & Content Delivery](./04_CACHING_AND_CONTENT_DELIVERY.md), [06 — Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md)  
+**Prerequisites:** [01 — Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md), [03 — Consistency & Transactions](./03_CONSISTENCY_AND_TRANSACTIONS.md)
+**Builds toward:** [05 — Caching & Content Delivery](./05_CACHING_AND_CONTENT_DELIVERY.md), [06 — Replication & Partitioning](./06_REPLICATION_AND_PARTITIONING.md)
 **Estimated study time:** 4-5 hours
 
 ---
@@ -1200,10 +1200,10 @@ Add:
 
 | Related Topic | Connection |
 |---------------|------------|
-| [Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md) | Storage engine affects consistency guarantees |
-| [Caching & Content Delivery](./04_CACHING_AND_CONTENT_DELIVERY.md) | Cache sits in front of storage layer |
-| [Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md) | Storage engine affects replication strategy |
-| [Workload Optimization](./08_WORKLOAD_OPTIMIZATION.md) | Storage choice determines optimization options |
+| [Consistency & Transactions](./03_CONSISTENCY_AND_TRANSACTIONS.md) | Storage engine affects consistency guarantees |
+| [Caching & Content Delivery](./05_CACHING_AND_CONTENT_DELIVERY.md) | Cache sits in front of storage layer |
+| [Replication & Partitioning](./06_REPLICATION_AND_PARTITIONING.md) | Storage engine affects replication strategy |
+| [Scaling & Infrastructure](./09_SCALING_AND_INFRASTRUCTURE.md) | Storage choice determines optimization options |
 
 ---
 
@@ -1280,6 +1280,6 @@ Add:
 
 ## Navigation
 
-**Previous:** [02 — Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md)
-**Next:** [04 — Caching & Content Delivery](./04_CACHING_AND_CONTENT_DELIVERY.md)
+**Previous:** [03 — Consistency & Transactions](./03_CONSISTENCY_AND_TRANSACTIONS.md)
+**Next:** [05 — Caching & Content Delivery](./05_CACHING_AND_CONTENT_DELIVERY.md)
 **Index:** [README](./README.md)

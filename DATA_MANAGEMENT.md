@@ -416,7 +416,7 @@ flowchart TB
 | [Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md) | ACID/BASE trade-offs in database selection |
 | [Data Storage & Access](./03_DATA_STORAGE_AND_ACCESS.md) | Storage engine and indexing deep-dives |
 | [Caching](./04_CACHING_AND_CONTENT_DELIVERY.md) | Cache sits in front of storage layer |
-| [Distributed Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md) | Patterns for distributed data systems |
+| [Distributed Coordination](./07_DISTRIBUTED_COORDINATION.md) | Patterns for distributed data systems |
 
 ---
 

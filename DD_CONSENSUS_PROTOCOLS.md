@@ -3,7 +3,7 @@
 > How distributed systems agree on a single value despite failures.
 
 **Prerequisites:** [Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md), [Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md)
-**Related:** [Dynamo Architecture](./DD_DYNAMO_ARCHITECTURE.md), [Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md)
+**Related:** [Dynamo Architecture](./DD_DYNAMO_ARCHITECTURE.md), [Distributed Coordination](./07_DISTRIBUTED_COORDINATION.md)
 **Estimated study time:** 4-5 hours
 
 ---
@@ -1163,6 +1163,6 @@ flowchart TD
 ## Navigation
 
 **Parent:** [Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md)
-**Related:** [Dynamo Architecture](./DD_DYNAMO_ARCHITECTURE.md), [Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md)
+**Related:** [Dynamo Architecture](./DD_DYNAMO_ARCHITECTURE.md), [Distributed Coordination](./07_DISTRIBUTED_COORDINATION.md)
 **Previous:** [Dynamo Architecture](./DD_DYNAMO_ARCHITECTURE.md)
 **Index:** [README](./README.md)

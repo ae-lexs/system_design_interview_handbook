@@ -1102,7 +1102,7 @@ class DynamoNode:
 
 ## Navigation
 
-**Parent:** [Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md)
+**Parent:** [Distributed Coordination](./07_DISTRIBUTED_COORDINATION.md)
 **Related:** [Consistent Hashing](./DD_CONSISTENT_HASHING.md), [Sharding & Partitioning](./DD_SHARDING_PARTITIONING.md)
 **Previous:** [Storage Engines](./DD_STORAGE_ENGINES.md)
 **Index:** [README](./README.md)

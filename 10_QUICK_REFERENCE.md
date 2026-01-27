@@ -1,4 +1,4 @@
-# 09 — Quick Reference Card
+# 10 — Quick Reference Card
 
 > Essential numbers, formulas, decision frameworks, and articulation patterns for rapid recall during interviews.
 
@@ -832,7 +832,7 @@ flowchart TD
 
 | Previous | Index |
 |----------|-------|
-| [08 — Workload Optimization](./08_WORKLOAD_OPTIMIZATION.md) | [README](./README.md) |
+| [09 — Scaling and Infrastructure](./09_SCALING_AND_INFRASTRUCTURE.md) | [README](./README.md) |
 
 ---
 

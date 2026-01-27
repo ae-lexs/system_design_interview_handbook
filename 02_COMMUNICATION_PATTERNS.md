@@ -1,4 +1,4 @@
-# 05 - Communication Patterns: Synchronous, Asynchronous, and Real-Time
+# 02 - Communication Patterns: Synchronous, Asynchronous, and Real-Time
 
 ## Overview
 
@@ -1564,11 +1564,11 @@ flowchart TB
 
 | Related Topic | Connection |
 |---------------|------------|
-| [Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md) | Async messaging implies eventual consistency |
+| [Consistency & Transactions](./03_CONSISTENCY_AND_TRANSACTIONS.md) | Async messaging implies eventual consistency |
 | [Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md) | Sync optimizes latency, async optimizes throughput |
-| [Caching & Content Delivery](./04_CACHING_AND_CONTENT_DELIVERY.md) | REST enables HTTP caching; invalidation via events |
-| [Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md) | Events can trigger replication |
-| [Scaling & Infrastructure](./07_SCALING_AND_INFRASTRUCTURE.md) | API Gateway handles rate limiting, circuit breaking |
+| [Caching & Content Delivery](./05_CACHING_AND_CONTENT_DELIVERY.md) | REST enables HTTP caching; invalidation via events |
+| [Replication & Partitioning](./06_REPLICATION_AND_PARTITIONING.md) | Events can trigger replication |
+| [Scaling & Infrastructure](./09_SCALING_AND_INFRASTRUCTURE.md) | API Gateway handles rate limiting, circuit breaking |
 
 ---
 
@@ -1598,6 +1598,6 @@ flowchart TB
 
 ## Navigation
 
-**Previous:** [04 - Caching & Content Delivery](./04_CACHING_AND_CONTENT_DELIVERY.md)
-**Next:** [06 - Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md)
+**Previous:** [01 - Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md)
+**Next:** [03 - Consistency & Transactions](./03_CONSISTENCY_AND_TRANSACTIONS.md)
 **Index:** [README](./README.md)

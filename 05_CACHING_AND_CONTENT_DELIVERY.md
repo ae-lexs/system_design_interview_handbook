@@ -1,9 +1,9 @@
-# 04 — Caching and Content Delivery
+# 05 — Caching and Content Delivery
 
 > "The most effective way to improve performance is to avoid doing work—caching stores the results of expensive operations for reuse."
 
-**Prerequisites:** [01 — Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md), [03 — Data Storage & Access](./03_DATA_STORAGE_AND_ACCESS.md)
-**Builds toward:** [06 — Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md), [07 — Scaling & Infrastructure](./07_SCALING_AND_INFRASTRUCTURE.md)  
+**Prerequisites:** [01 — Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md), [04 — Data Storage & Access](./04_DATA_STORAGE_AND_ACCESS.md)
+**Builds toward:** [06 — Replication & Partitioning](./06_REPLICATION_AND_PARTITIONING.md), [09 — Scaling & Infrastructure](./09_SCALING_AND_INFRASTRUCTURE.md)
 **Estimated study time:** 3-4 hours
 
 ---
@@ -1662,10 +1662,10 @@ Add:
 |---------------|------------|
 | [Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md) | Caching inherently introduces eventual consistency |
 | [Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md) | Latency/throughput fundamentals |
-| [Distributed System Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md) | Cache replication for high availability |
-| [Communication Patterns](./05_COMMUNICATION_PATTERNS.md) | Cache invalidation can trigger real-time updates |
-| [Scaling & Infrastructure](./07_SCALING_AND_INFRASTRUCTURE.md) | CDN and caching are key traffic management tools |
-| [Workload Optimization](./08_WORKLOAD_OPTIMIZATION.md) | Caching is the primary read optimization strategy |
+| [Replication & Partitioning](./06_REPLICATION_AND_PARTITIONING.md) | Cache replication for high availability |
+| [Distributed Coordination](./07_DISTRIBUTED_COORDINATION.md) | Coordination patterns for distributed caches |
+| [Scaling & Infrastructure](./09_SCALING_AND_INFRASTRUCTURE.md) | CDN and caching are key traffic management tools |
+| [Quick Reference](./10_QUICK_REFERENCE.md) | Caching quick reference and cheat sheets |
 
 ---
 
@@ -1681,6 +1681,6 @@ Add:
 
 ## Navigation
 
-**Previous:** [03 — Data Storage & Access](./03_DATA_STORAGE_AND_ACCESS.md)
-**Next:** [05 — Communication Patterns](./05_COMMUNICATION_PATTERNS.md)
+**Previous:** [04 — Data Storage & Access](./04_DATA_STORAGE_AND_ACCESS.md)
+**Next:** [06 — Replication & Partitioning](./06_REPLICATION_AND_PARTITIONING.md)
 **Index:** [README](./README.md)

@@ -1323,21 +1323,22 @@ Before your interview, ensure you can:
 
 | Module | Connection to Foundational Concepts |
 |--------|-------------------------------------|
-| [02 — Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md) | Isolation levels, distributed transactions |
-| [03 — Data Storage](./03_DATA_STORAGE_AND_ACCESS.md) | Storage engines, indexing, data modeling |
-| [04 — Caching](./04_CACHING_AND_CONTENT_DELIVERY.md) | Latency optimization, consistency trade-offs |
-| [05 — Communication](./05_COMMUNICATION_PATTERNS.md) | APIs, messaging, real-time patterns |
-| [06 — Distributed Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md) | CAP/PACELC application, availability patterns |
-| [07 — Scaling](./07_SCALING_AND_INFRASTRUCTURE.md) | Horizontal scaling implementation |
-| [08 — Workload Optimization](./08_WORKLOAD_OPTIMIZATION.md) | Read/write optimization, CQRS |
-| [09 — Quick Reference](./09_QUICK_REFERENCE.md) | Estimation formulas, decision trees |
+| [02 — Communication Patterns](./02_COMMUNICATION_PATTERNS.md) | APIs, messaging, real-time patterns |
+| [03 — Consistency & Transactions](./03_CONSISTENCY_AND_TRANSACTIONS.md) | Isolation levels, distributed transactions |
+| [04 — Data Storage & Access](./04_DATA_STORAGE_AND_ACCESS.md) | Storage engines, indexing, data modeling |
+| [05 — Caching & Content Delivery](./05_CACHING_AND_CONTENT_DELIVERY.md) | Latency optimization, consistency trade-offs |
+| [06 — Replication & Partitioning](./06_REPLICATION_AND_PARTITIONING.md) | Data distribution, sharding strategies |
+| [07 — Distributed Coordination](./07_DISTRIBUTED_COORDINATION.md) | Consensus, leader election, distributed locks |
+| [08 — Resilience Patterns](./08_RESILIENCE_PATTERNS.md) | CAP/PACELC application, availability patterns |
+| [09 — Scaling & Infrastructure](./09_SCALING_AND_INFRASTRUCTURE.md) | Horizontal scaling implementation |
+| [10 — Quick Reference](./10_QUICK_REFERENCE.md) | Estimation formulas, decision trees |
 
 ---
 
 ## Navigation
 
-**Next:** [02 — Consistency & Transactions](./02_CONSISTENCY_AND_TRANSACTIONS.md)
-**Quick Reference:** [09 — Quick Reference](./09_QUICK_REFERENCE.md)
+**Next:** [02 — Communication Patterns](./02_COMMUNICATION_PATTERNS.md)
+**Quick Reference:** [10 — Quick Reference](./10_QUICK_REFERENCE.md)
 **Index:** [README](./README.md)
 
 ---

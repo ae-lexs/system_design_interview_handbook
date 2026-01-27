@@ -1,4 +1,4 @@
-# 02 - Consistency and Transactions
+# 03 - Consistency and Transactions
 
 ## Deep Dive into Transactional Guarantees, Isolation Levels, and Distributed Coordination
 
@@ -884,10 +884,10 @@ flowchart TD
 | Related Topic | Connection |
 |---------------|------------|
 | [Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md) | Core distributed systems principles |
-| [Data Storage](./03_DATA_STORAGE_AND_ACCESS.md) | Storage engines and database selection |
-| [Distributed Patterns](./06_DISTRIBUTED_SYSTEM_PATTERNS.md) | Replication, distributed transactions |
-| [Communication Patterns](./05_COMMUNICATION_PATTERNS.md) | Sagas often use message queues for coordination |
-| [Workload Optimization](./08_WORKLOAD_OPTIMIZATION.md) | Read/write patterns affect transaction design |
+| [Communication Patterns](./02_COMMUNICATION_PATTERNS.md) | Sagas often use message queues for coordination |
+| [Data Storage](./04_DATA_STORAGE_AND_ACCESS.md) | Storage engines and database selection |
+| [Replication & Partitioning](./06_REPLICATION_AND_PARTITIONING.md) | Replication, distributed transactions |
+| [Scaling & Infrastructure](./09_SCALING_AND_INFRASTRUCTURE.md) | Read/write patterns affect transaction design |
 
 ---
 
@@ -1104,4 +1104,4 @@ sequenceDiagram
 
 ---
 
-*Previous: [01 - Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md) | Next: [03 - Data Storage & Access](./03_DATA_STORAGE_AND_ACCESS.md)*
+*Previous: [02 - Communication Patterns](./02_COMMUNICATION_PATTERNS.md) | Next: [04 - Data Storage & Access](./04_DATA_STORAGE_AND_ACCESS.md)*
