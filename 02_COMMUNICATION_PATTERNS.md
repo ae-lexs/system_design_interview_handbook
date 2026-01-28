@@ -6,6 +6,20 @@ Communication patterns determine how components interact within a distributed sy
 
 ---
 
+## Document Navigation
+
+| Section | Focus | Interview Relevance |
+|---------|-------|---------------------|
+| [Part I: Synchronous Communication](#part-i-synchronous-communication) | REST, gRPC, GraphQL paradigms | "When would you use gRPC over REST?" |
+| [Part II: Asynchronous Communication](#part-ii-asynchronous-communication) | Message queues, Pub/Sub, Kafka | "How do you handle message ordering?" |
+| [Part III: Real-Time Communication](#part-iii-real-time-communication) | Polling, SSE, WebSockets, Webhooks | "SSE vs WebSocket trade-offs?" |
+| [Part IV: Service Exposure Patterns](#part-iv-service-exposure-patterns) | API Gateway, BFF, Service Mesh | "How do you manage 50+ microservices?" |
+| [Part V: Integration Patterns](#part-v-integration-patterns) | Combining patterns for real systems | "Design the communication layer for X" |
+| [Interview Scenarios](#interview-scenarios) | Applied design examples | Common interview problems |
+| [Quick Reference Card](#quick-reference-card) | At-a-glance summary | Last-minute review |
+
+---
+
 ## Core Mental Model
 
 ```mermaid

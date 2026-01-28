@@ -34,6 +34,22 @@ Multiple clients accessing shared data simultaneously can corrupt state unless c
 
 ---
 
+## Document Navigation
+
+| Section | Focus | Interview Relevance |
+|---------|-------|---------------------|
+| [Mental Models](#mental-models) | Intuitive analogies for transactions | Quick conceptual explanations |
+| [Transaction Isolation Levels](#transaction-isolation-levels) | Anomalies: dirty reads, phantoms, write skew | "What isolation level for banking?" |
+| [Isolation Levels Deep Dive](#isolation-levels-deep-dive) | Comparison matrix and implementation | "MVCC vs locking trade-offs?" |
+| [Concurrency Control Mechanisms](#concurrency-control-mechanisms) | 2PL, MVCC, OCC, deadlocks | "How do you prevent lost updates?" |
+| [Distributed Transactions](#distributed-transactions) | 2PC, 3PC, Saga pattern | "How do you handle cross-service transactions?" |
+| [Transaction Patterns for Microservices](#transaction-patterns-for-microservices) | Outbox pattern, CDC | "How do you reliably publish events?" |
+| [Consistency Models Deep Dive](#consistency-models-deep-dive) | Linearizability, session guarantees, Jepsen | "Explain linearizability vs serializability" |
+| [Decision Framework](#decision-framework) | When to use each approach | Applied design decisions |
+| [Quick Reference Card](#quick-reference-card) | At-a-glance summary | Last-minute review |
+
+---
+
 ## Mental Models
 
 ### The Hotel Room Analogy
