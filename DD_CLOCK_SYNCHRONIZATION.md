@@ -718,8 +718,8 @@ flowchart TD
     Q2 -->|No| LAMPORT[Lamport Clock]
     Q2 -->|Yes| PHYSICAL[Physical + NTP]
 
-    Q3 -->|"Small (< 100)"| VECTOR[Vector Clock]
-    Q3 -->|"Large"| Q4{Need wall-clock time?}
+    Q3 -->|Small| VECTOR[Vector Clock]
+    Q3 -->|Large| Q4{Need wall-clock time?}
 
     Q4 -->|No| LAMPORT
     Q4 -->|Yes| HLC[Hybrid Logical Clock]
