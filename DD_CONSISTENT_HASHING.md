@@ -1033,8 +1033,8 @@ flowchart TD
     Q2 -->|Yes| JUMP[Jump Hash<br/>O(1) space]
     Q2 -->|No| RING1[Ring-based<br/>Accept O(N) space]
 
-    Q3 -->|"Small: under 50"| Q4{Need K replicas<br/>naturally?}
-    Q3 -->|"Large: 50+"| RING2[Ring-based<br/>With virtual nodes]
+    Q3 -->|Small| Q4{Need K replicas<br/>naturally?}
+    Q3 -->|Large| RING2[Ring-based<br/>With virtual nodes]
 
     Q4 -->|Yes| HRW[Rendezvous/HRW<br/>O(N) lookup OK]
     Q4 -->|No| RING3[Ring-based<br/>Standard choice]
