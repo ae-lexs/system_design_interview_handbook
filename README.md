@@ -43,7 +43,7 @@ graph TB
         DD1[DD_STORAGE_ENGINES]
         DD2[DD_SHARDING_PARTITIONING]
         DD3[DD_CONSISTENT_HASHING]
-        DD4[DD_DYNAMO_ARCHITECTURE]
+        DD4[DD_DYNAMODB_MODELING]
         DD5[DD_CONSENSUS_PROTOCOLS]
         DD6[DD_CLOCK_SYNCHRONIZATION]
         DD7[DD_SERVICE_LEVEL_OBJECTIVES]
@@ -105,7 +105,7 @@ graph TB
 | [DD_STORAGE_ENGINES](./DD_STORAGE_ENGINES.md) | B-Tree vs LSM, WAL, Compaction | Need to discuss storage internals |
 | [DD_SHARDING_PARTITIONING](./DD_SHARDING_PARTITIONING.md) | Range, Hash, Consistent, Directory | Designing for horizontal scale |
 | [DD_CONSISTENT_HASHING](./DD_CONSISTENT_HASHING.md) | Ring, Jump, Maglev, Bounded Load | Load balancers, distributed caches |
-| [DD_DYNAMO_ARCHITECTURE](./DD_DYNAMO_ARCHITECTURE.md) | Vector Clocks, Sloppy Quorum, Gossip | AP systems, eventual consistency |
+| [DD_DYNAMODB_MODELING](./DD_DYNAMODB_MODELING.md) | Partition Keys, Sort Keys, GSIs, Access Patterns | DynamoDB data modeling |
 | [DD_CONSENSUS_PROTOCOLS](./DD_CONSENSUS_PROTOCOLS.md) | Paxos, Raft, Zab | CP systems, leader election |
 | [DD_CLOCK_SYNCHRONIZATION](./DD_CLOCK_SYNCHRONIZATION.md) | Lamport, Vector, HLC, TrueTime | Ordering, causality, timestamps |
 | [DD_SERVICE_LEVEL_OBJECTIVES](./DD_SERVICE_LEVEL_OBJECTIVES.md) | SLOs, SLIs, SLAs, Error Budgets | Availability targets, production readiness |

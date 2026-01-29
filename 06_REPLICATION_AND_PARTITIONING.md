@@ -3,7 +3,7 @@
 > "How data is replicated, partitioned, and synchronized across distributed systems."
 
 **Prerequisites:** [01 — Foundational Concepts](./01_FOUNDATIONAL_CONCEPTS.md), [02 — Communication Patterns](./02_COMMUNICATION_PATTERNS.md), [03 — Consistency & Transactions](./03_CONSISTENCY_AND_TRANSACTIONS.md), [04 — Data Storage & Access](./04_DATA_STORAGE_AND_ACCESS.md), [05 — Caching & Content Delivery](./05_CACHING_AND_CONTENT_DELIVERY.md)
-**Deep Dives:** [DD_SHARDING_PARTITIONING](./DD_SHARDING_PARTITIONING.md), [DD_DYNAMO_ARCHITECTURE](./DD_DYNAMO_ARCHITECTURE.md)
+**Deep Dives:** [DD_SHARDING_PARTITIONING](./DD_SHARDING_PARTITIONING.md), [DD_DYNAMODB_MODELING](./DD_DYNAMODB_MODELING.md)
 **Estimated study time:** 3-4 hours
 
 ---
@@ -20,7 +20,7 @@ This module covers the core patterns for managing data across distributed system
 
 Replication ensures data durability and availability by maintaining copies across multiple nodes.
 
-> **Deep Dive:** For comprehensive coverage of Dynamo-style replication (sloppy quorums, hinted handoff, Merkle trees), see [DD_DYNAMO_ARCHITECTURE.md](./DD_DYNAMO_ARCHITECTURE.md).
+> **Deep Dive:** For practical DynamoDB data modeling (partition keys, sort keys, GSIs, access patterns), see [DD_DYNAMODB_MODELING.md](./DD_DYNAMODB_MODELING.md).
 
 ### Primary-Backup Replication
 
@@ -640,7 +640,7 @@ flowchart LR
 | Related Topic | Connection |
 |---------------|------------|
 | [DD_SHARDING_PARTITIONING](./DD_SHARDING_PARTITIONING.md) | Data partitioning strategies for horizontal scaling |
-| [DD_DYNAMO_ARCHITECTURE](./DD_DYNAMO_ARCHITECTURE.md) | Sloppy quorums, hinted handoff, and Merkle trees for replication |
+| [DD_DYNAMODB_MODELING](./DD_DYNAMODB_MODELING.md) | DynamoDB partition keys, sort keys, GSIs, and access patterns |
 | [Consistency & Transactions](./03_CONSISTENCY_AND_TRANSACTIONS.md) | Consistency trade-offs in replication |
 | [Data Storage & Access](./04_DATA_STORAGE_AND_ACCESS.md) | Storage engines and data models |
 | [Communication Patterns](./02_COMMUNICATION_PATTERNS.md) | Event-driven messaging for CDC and event sourcing |
