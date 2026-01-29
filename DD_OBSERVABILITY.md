@@ -514,7 +514,7 @@ flowchart TD
     Q1 -->|"Yes"| Q2{Can someone<br/>take action?}
 
     Q2 -->|"No"| METRIC
-    Q2 -->|"Yes"| Q3{Is it urgent?<br/>(needs immediate fix)}
+    Q2 -->|"Yes"| Q3{Is it urgent?<br/>Needs immediate fix}
 
     Q3 -->|"No"| Q4{Does it need<br/>same-day response?}
     Q3 -->|"Yes"| PAGE["Page on-call<br/>(P1/P2)"]
