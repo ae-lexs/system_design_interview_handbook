@@ -598,7 +598,7 @@ def get_user(user_id: str) -> User:
 - **Redis:** Need data structures, persistence, pub/sub, atomic operations
 - **Memcached:** Pure caching, maximum simplicity, multi-threaded performance
 
-> **Deep Dive:** See [DD_REDIS_INTERNALS](./DD_REDIS_INTERNALS.md) for data structures, clustering, persistence mechanisms, and distributed locking.
+> **Deep Dive:** See [DD_REDIS_ARCHITECTURE](./DD_REDIS_ARCHITECTURE.md) for data structures, clustering, persistence mechanisms, and distributed locking.
 
 ### Cache Cluster Architectures
 
@@ -1672,7 +1672,7 @@ Add:
 
 | Deep Dive | Topics Covered |
 |-----------|----------------|
-| [DD_REDIS_INTERNALS](./DD_REDIS_INTERNALS.md) | Data structures with complexity, Sentinel, Cluster, persistence, Redlock |
+| [DD_REDIS_ARCHITECTURE](./DD_REDIS_ARCHITECTURE.md) | Data structures with complexity, Sentinel, Cluster, persistence, Redlock |
 
 ---
 
